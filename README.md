@@ -29,3 +29,7 @@ open the webpage on two devices (ideally two laptops)
 click on the blue circle on one of them to switch role to red
 
 simultaneously launch the agents, enjoy
+
+# Credits
+
+This demo is built on top of [ggwave](https://github.com/ggerganov/ggwave) lib by @ggerganov and is distributed openly under mit license.
