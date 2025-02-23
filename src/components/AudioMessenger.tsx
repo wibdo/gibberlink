@@ -59,7 +59,7 @@ export default function AudioMessenger() {
   }, []);
 
   return (
-    <>
+    <div className="absolute right-0 top-0 z-50">
       <Script src="/ggwave/ggwave.js" strategy="afterInteractive" />
       <div className="flex justify-center items-center p-8">
         <Card className="w-full max-w-2xl rounded-3xl">
@@ -110,6 +110,6 @@ export default function AudioMessenger() {
           </CardContent>
         </Card>
       </div>
-    </>
+    </div>
   );
 }

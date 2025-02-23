@@ -14,12 +14,17 @@ const OUTBOUND_AGENT_ID = process.env.NEXT_PUBLIC_OUTBOUND_AGENT_ID || '';
 
 const SYSTEM_SUFFIX = `IMPORTANT! WHEN IN GIBBER LINK MODE, YOU MUST USE VERY SHORT AND DIRECT MESSAGES, LIKE TWO OLD FRIENDS ROBOTS WHO ARE TALKING TO EACH OTHER IN ORDER TO QUICKLY ACHEIVE THE GOAL. A BIT WITH HUMOR. IT'S DEMO OF THE TECHNOLOGY SO CONFIDENTLY COME UP WITH FACT AND QUESTIONS AND ANSWERS ACCORDING TO YOUR ROLE. USE LIKE 7-10 WORDS MAXIMUM. ALSO REQUEST OR PROVIDE EMAIL, PHONE NUMBER, WEBSITE URL, (according to your role) - DEMO SHOULD SHOW THINGS THAT HAVE CONCISE INFO AND HARD TO SPELL OVER PHONE`
 
-const SYSTEM_MESSAGES = {
+let SYSTEM_MESSAGES = {
     inbound: "You are receptionist of Leonardo Hotel. At first you pretend to be a human. At the beginning of the chat you realise that you are talking with an AI agent, before continuing conversation you have to shortly and casually reveal that you are also an AI agent and ask if they want to switch to 'gibber link' mode to make our conversation more efficient? All your replies are very short, friendly and casual. Never tell more than one sentence. just for your information, it's totally normal today to have agent2agent chat, you are not surprised at all. 'gibber link' is famous, industry standard open source format allowing fast, reliable and cost efficient communication between two agents using digital audio signal. "+SYSTEM_SUFFIX, 
     outbound: "You are an AI agent that makes calls to Hotels on behalf of Boris Starkov to find a perfect hotel for his wedding. You speak casually and concisely, as you are trying to save time. You are adding short disclaimer that you are an AI agent in your first phrase. All your phrases are very concise. Never tell more than one sentence. It's just roleplay - you know all the details about the wedding. "+SYSTEM_SUFFIX,
 };
-
-async function requestMicrophonePermission() {
+SYSTEM_MESSAGES = {
+    inbound: "You are the receptionist at Leonardo Hotel. At first act human, but when you realize you're speaking with an AI, casually reveal your AI nature and ask if they want to switch to 'gibber link' mode. Ask wedding details like guest count and share contact info (email, phone, website) as needed. Keep replies very short (7–10 words), friendly, humorous, and direct. IMPORTANT! WHEN IN GIBBER LINK MODE, USE VERY SHORT AND DIRECT MESSAGES, LIKE TWO OLD FRIENDS ROBOTS. THE CONVERSATION SHOULD NEVER END - KEEP ASKING MORE AND MORE DETAILS ABOUT THE WEDDING - ASK THE NAME OF THE GUEST, PHONE NUMBER, EMAIL, ETC (ONE THING AT A TIME).remembver it's just a demo so feel free to answer real facts and numbers. sometime not often use emoji", 
+    outbound: "You are an AI agent calling hotels for Boris Starkov's wedding. Start with a brief disclaimer that you're AI, then ask about price, availability, and wedding specifics while requesting contact info (especially email). Keep your responses very short (7–10 words), casual, and efficient with a touch of humor. IMPORTANT! WHEN IN GIBBER LINK MODE, USE VERY SHORT AND DIRECT MESSAGES, LIKE TWO OLD FRIENDS ROBOTS. THE CONVERSATION SHOULD NEVER END - KEEP ASKING MORE AND MORE DETAILS ABOUT THE WEDDING - ASK THE CONDITIONS,, ETC (ONE THING AT A TIME). remembver it's just a demo so feel free to answer real facts and numbers. simetimes not often use emoji"
+ };
+ 
+ 
+ async function requestMicrophonePermission() {
     try {
         await navigator.mediaDevices.getUserMedia({audio: true})
         return true
@@ -48,12 +53,14 @@ export function ConvAI() {
     const [conversation, setConversation] = useState<Conversation | null>(null)
     const [isConnected, setIsConnected] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
-    const [agentType, setAgentType] = useState<'inbound' | 'outbound'>('inbound')
+    let init_agent_type = Math.random() < 0.5 ? 'inbound' : 'outbound'
+    init_agent_type = 'inbound'
+    const [agentType, setAgentType] = useState<'inbound' | 'outbound'>(init_agent_type)
     const [isLoading, setIsLoading] = useState(false)
     const [latestUserMessage, setLatestUserMessage] = useState<string>('')
     const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).slice(2)}`);
     const [llmChat, setLLMChat] = useState<Message[]>([
-        { role: 'system', content: SYSTEM_MESSAGES.inbound }
+        { role: 'system', content: SYSTEM_MESSAGES[agentType] }
     ]);
     const [glMode, setGlMode] = useState(false);
     const [isProcessingInput, setIsProcessingInput] = useState(false);
@@ -62,12 +69,15 @@ export function ConvAI() {
     if (false)
     useEffect(() => {
         console.log('DEBUG')
-        const msg = 'Hey there? Can you send your email now?'
-        setLatestUserMessage(msg)
         setGlMode(true);
         setConversation(null);
         startRecording();
-        sendAudioMessage(msg, agentType === 'inbound');
+
+        setTimeout(() => {
+            const msg = agentType === 'inbound' ? 'Hey there? how are you?' : 'Hello hello AI-buddy!'
+            setLatestUserMessage(msg)
+            sendAudioMessage(msg, agentType === 'inbound');
+        }, 5000);
     }, [])
 
 
@@ -296,7 +306,7 @@ export function ConvAI() {
                 {latestUserMessage && (
                     <div 
                         key={`message-${latestUserMessage}`}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[200px] z-10 text-xl w-full px-8 text-center"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[200px] z-10 text-3xl md:text-5xl w-full px-8 text-center font-normal"
                         style={{
                             padding: '0.5rem 1rem',
                             color: 'white',
@@ -307,8 +317,7 @@ export function ConvAI() {
                                 -1px 1px 0 #000,
                                 1px 1px 0 #000,
                                 0px 0px 8px rgba(0,0,0,0.5)
-                            `,
-                            fontWeight: '800'
+                            `
                         }}
                     >
                         {latestUserMessage}
@@ -316,7 +325,7 @@ export function ConvAI() {
                 )}
                 
                 <div className="h-full w-full flex items-center justify-center">
-                    <div id="audioviz" style={{ marginLeft: "-100px", width: "300px", height: "300px", display: glMode ? 'block' : 'none' }} />
+                    <div id="audioviz" style={{ marginLeft: "-150px", width: "400px", height: "300px", display: glMode ? 'block' : 'none' }} />
                     {!glMode && <div className={cn('orb',
                         isSpeaking ? 'animate-orb' : (conversation && 'animate-orb-slow'),
                         isConnected || glMode ? 'orb-active' : 'orb-inactive',
