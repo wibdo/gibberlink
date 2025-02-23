@@ -2,12 +2,6 @@
 
 A lightweight open source protocol for efficient and error proof over-the-phone communication for AI agents.
 
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
 ## Getting Started
 
 ### Prerequisites
@@ -40,23 +34,3 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
-
-## Usage
-
-Explain how to use the application with examples.
-
-## Architecture
-
-Brief overview of the project's architecture and technology stack.
-
-## Contributing
-
-Instructions for how to contribute to the project.
-
-## License
-
-This project is licensed under the [LICENSE NAME] - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- List any credits, inspirations, or resources used
