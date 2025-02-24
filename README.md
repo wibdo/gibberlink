@@ -1,10 +1,11 @@
 # GibberLink
 
-A lightweight open source protocol for efficient and error proof over-the-phone communication for AI agents.
+Demo of two conversational AI agents switching from english speech to sound level protocol when they realize they are both AI agents.
 
+**Click image below to watch demo video on youtube:**
 [![Demo](https://img.youtube.com/vi/EtNagNezo8w/maxresdefault.jpg)](https://www.youtube.com/watch?v=EtNagNezo8w)
 
-# Getting Started
+# Reproducing the demo
 
 To reproduce the demo, follow the steps below:
 
