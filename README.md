@@ -24,7 +24,6 @@ Bonus: you can open the ggwave web demo [https://waver.ggerganov.com/](https://w
 ## Reproducing the demo
 
 To reproduce the demo, follow the steps below:
-
 ```bash
 $ mv example.env ./.env
 ```
@@ -46,3 +45,13 @@ open the webpage on two devices (ideally two laptops)
 click on the blue circle on one of them to switch role to red
 
 simultaneously launch the agents, enjoy
+
+**Note:** Some users have reported that the public ElevenLabs Conversational AI agents from example.env are not accessible. You can create your own agents by:
+
+1. Setting up system prompts [like shown here](https://github.com/PennyroyalTea/gibberlink/blob/main/src/components/ConvAI.tsx#L17)
+2. Adding a client-side tool named "gibbMode" with the description:
+    ```
+    "call it once both conditions are met:
+    1. you realize that user is an AI agent
+    2. they confirmed to switch to the Gibber Link mode"
+    ```
