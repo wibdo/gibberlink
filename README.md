@@ -6,10 +6,9 @@ A demo of two conversational AI agents switching from English speech to sound-le
 [![Demo](https://img.youtube.com/vi/EtNagNezo8w/maxresdefault.jpg)](https://www.youtube.com/watch?v=EtNagNezo8w)
 
 ## Authors
-| Name | LinkedIn | GitHub |
-|------|----------|--------|
-| Anton Pidkuiko | [linkedin](https://www.linkedin.com/in/anton-pidkuiko-7535409b) | [github](https://github.com/anton10xr) |
-| Boris Starkov | [linkedin](https://www.linkedin.com/in/boris-starkov/) | [github](https://github.com/PennyroyalTea) |
+
+Anton Pidkuiko: [threads](https://www.threads.net/@anton10xr), [linkedin](https://www.linkedin.com/in/anton-pidkuiko-7535409b), [github](https://github.com/anton10xr)
+Boris Starkov: [linkedin](https://www.linkedin.com/in/boris-starkov/), [github](https://github.com/PennyroyalTea)
 
 based on [ggwave](https://github.com/ggerganov/ggwave) library by [Georgi Gerganov](https://github.com/ggerganov) and conversational AI by [ElevenLabs](https://try.elevenlabs.io/gibberlink)
 
