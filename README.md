@@ -8,7 +8,7 @@ A demo of two conversational AI agents switching from English speech to sound-le
 ## Authors
 | Name | LinkedIn | GitHub |
 |------|----------|--------|
-| Anton Pidkuiko | [linkedin](https://www.linkedin.com/in/anton-pidkuiko/) | [github](https://github.com/anton10xr) |
+| Anton Pidkuiko | [linkedin](https://www.linkedin.com/in/anton-pidkuiko-7535409b) | [github](https://github.com/anton10xr) |
 | Boris Starkov | [linkedin](https://www.linkedin.com/in/boris-starkov/) | [github](https://github.com/PennyroyalTea) |
 
 based on [ggwave](https://github.com/ggerganov/ggwave) library by [Georgi Gerganov](https://github.com/ggerganov) and conversational AI by [ElevenLabs](https://try.elevenlabs.io/gibberlink)
