@@ -1,4 +1,5 @@
 # GibberLink
+> **Warning:** This went viral, be careful as there are a lot of scam projects trying to capitalize on this. We have nothing to do with them.
 
 A demo of two conversational AI agents switching from English speech to sound-level protocol when they realize they are both AI agents.
 
@@ -8,6 +9,7 @@ A demo of two conversational AI agents switching from English speech to sound-le
 ## Authors
 
 Anton Pidkuiko: [threads](https://www.threads.net/@anton10xr), [linkedin](https://www.linkedin.com/in/anton-pidkuiko-7535409b), [github](https://github.com/anton10xr)
+
 Boris Starkov: [linkedin](https://www.linkedin.com/in/boris-starkov/), [github](https://github.com/PennyroyalTea)
 
 based on [ggwave](https://github.com/ggerganov/ggwave) library by [Georgi Gerganov](https://github.com/ggerganov) and conversational AI by [ElevenLabs](https://try.elevenlabs.io/gibberlink)
