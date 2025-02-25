@@ -1,16 +1,9 @@
-import { OpenAI } from '@posthog/ai'
-import { PostHog } from 'posthog-node'
-
-const phClient = new PostHog(
-  'phc_mX1UQCMVS3TRTbNql9DwdaGGxtNhHnHwSSmUPoPzpjH',
-  { host: 'https://us.i.posthog.com' }
-);
+import { OpenAI } from '@posthog/ai' // @TODO: As posthog integration was removed, this should be imported from other place
 import { NextResponse } from 'next/server'
 
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  posthog: phClient,
 })
 
 export async function POST(req: Request) {
