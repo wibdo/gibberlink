@@ -4,7 +4,7 @@
 > Scam projects circulate around impersonating this project and its creators. We don't sell anything including crypto, webinars, etc. This readme is the source of truth.
 
 ## Demo
-[gbrl.ai](www.gbrl.ai) — Agent2Agent conversation in your browser (use two devices)
+[gbrl.ai](https://www.gbrl.ai/) — Agent2Agent conversation in your browser (use two devices)
 
 [youtube](https://www.youtube.com/watch?v=EtNagNezo8w) — Agents switching from english to ggwave, video:
 
